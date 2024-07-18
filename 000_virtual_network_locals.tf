@@ -1,7 +1,7 @@
 locals {
   resource_group_name     = "${var.prefix}-rg"
   location                = "canadacentral"
-  environment_tag         = "Fortinet Competitive Env"
+  environment_tag         = "Fortinet Fabric Demo Env"
   virtual_network_name_01 = "${var.prefix}-vnet"
 
   resource_groups = {
@@ -39,27 +39,6 @@ locals {
       virtual_network_name = azurerm_virtual_network.virtual_network[local.virtual_network_name_01].name
       address_prefixes     = [cidrsubnet(azurerm_virtual_network.virtual_network[local.virtual_network_name_01].address_space[0], 8, 1)]
     },
-    "${var.prefix}-appgw" = {
-      resource_group_name = azurerm_resource_group.resource_group[local.resource_group_name].name
-
-      name                 = "${var.prefix}-appgw"
-      virtual_network_name = azurerm_virtual_network.virtual_network[local.virtual_network_name_01].name
-      address_prefixes     = [cidrsubnet(azurerm_virtual_network.virtual_network[local.virtual_network_name_01].address_space[0], 8, 2)]
-    },
-    "AzureFirewallSubnet" = {
-      resource_group_name = azurerm_resource_group.resource_group[local.resource_group_name].name
-
-      name                 = "AzureFirewallSubnet"
-      virtual_network_name = azurerm_virtual_network.virtual_network[local.virtual_network_name_01].name
-      address_prefixes     = [cidrsubnet(azurerm_virtual_network.virtual_network[local.virtual_network_name_01].address_space[0], 8, 3)]
-    },
-    "${var.prefix}-client" = {
-      resource_group_name = azurerm_resource_group.resource_group[local.resource_group_name].name
-
-      name                 = "${var.prefix}-client"
-      virtual_network_name = azurerm_virtual_network.virtual_network[local.virtual_network_name_01].name
-      address_prefixes     = [cidrsubnet(azurerm_virtual_network.virtual_network[local.virtual_network_name_01].address_space[0], 8, 4)]
-    },
     "${var.prefix}-server" = {
       resource_group_name = azurerm_resource_group.resource_group[local.resource_group_name].name
 
@@ -89,49 +68,6 @@ locals {
         }
       ]
     },
-    "${var.prefix}-fwb-nic-ext" = {
-      resource_group_name = azurerm_resource_group.resource_group[local.resource_group_name].name
-      location            = azurerm_resource_group.resource_group[local.resource_group_name].location
-
-      name                          = "${var.prefix}-fwb-nic-ext"
-      enable_ip_forwarding          = false
-      enable_accelerated_networking = false
-
-      ip_configurations = [
-        {
-          name                          = "ipconfig1"
-          primary                       = true
-          subnet_id                     = azurerm_subnet.subnet["${var.prefix}-external"].id
-          private_ip_address_allocation = "Static"
-          private_ip_address            = cidrhost(azurerm_subnet.subnet["${var.prefix}-external"].address_prefixes[0], 20)
-          public_ip_address_id          = azurerm_public_ip.public_ip["${var.prefix}-fwb-pip1"].id
-        },
-        {
-          name                          = "ipconfig2"
-          primary                       = false
-          subnet_id                     = azurerm_subnet.subnet["${var.prefix}-external"].id
-          private_ip_address_allocation = "Static"
-          private_ip_address            = cidrhost(azurerm_subnet.subnet["${var.prefix}-external"].address_prefixes[0], 21)
-          public_ip_address_id          = azurerm_public_ip.public_ip["${var.prefix}-fwb-pip2"].id
-        },
-        {
-          name                          = "ipconfig3"
-          primary                       = false
-          subnet_id                     = azurerm_subnet.subnet["${var.prefix}-external"].id
-          private_ip_address_allocation = "Static"
-          private_ip_address            = cidrhost(azurerm_subnet.subnet["${var.prefix}-external"].address_prefixes[0], 22)
-          public_ip_address_id          = azurerm_public_ip.public_ip["${var.prefix}-fwb-pip3"].id
-        },
-        {
-          name                          = "ipconfig4"
-          primary                       = false
-          subnet_id                     = azurerm_subnet.subnet["${var.prefix}-external"].id
-          private_ip_address_allocation = "Static"
-          private_ip_address            = cidrhost(azurerm_subnet.subnet["${var.prefix}-external"].address_prefixes[0], 23)
-          public_ip_address_id          = azurerm_public_ip.public_ip["${var.prefix}-fwb-pip4"].id
-        }
-      ]
-    },
     "${var.prefix}-fgt-nic-int" = {
       resource_group_name = azurerm_resource_group.resource_group[local.resource_group_name].name
       location            = azurerm_resource_group.resource_group[local.resource_group_name].location
@@ -149,44 +85,6 @@ locals {
           private_ip_address            = cidrhost(azurerm_subnet.subnet["${var.prefix}-internal"].address_prefixes[0], 4)
           public_ip_address_id          = null
 
-        }
-      ]
-    },
-    "${var.prefix}-fwb-nic-int" = {
-      resource_group_name = azurerm_resource_group.resource_group[local.resource_group_name].name
-      location            = azurerm_resource_group.resource_group[local.resource_group_name].location
-
-      name                          = "${var.prefix}-fwb-nic-int"
-      enable_ip_forwarding          = false
-      enable_accelerated_networking = false
-
-      ip_configurations = [
-        {
-          name                          = "ipconfig1"
-          primary                       = true
-          subnet_id                     = azurerm_subnet.subnet["${var.prefix}-internal"].id
-          private_ip_address_allocation = "Static"
-          private_ip_address            = cidrhost(azurerm_subnet.subnet["${var.prefix}-internal"].address_prefixes[0], 5)
-          public_ip_address_id          = null
-        }
-      ]
-    },
-    "${var.prefix}-client-nic" = {
-      resource_group_name = azurerm_resource_group.resource_group[local.resource_group_name].name
-      location            = azurerm_resource_group.resource_group[local.resource_group_name].location
-
-      name                          = "${var.prefix}-client-nic"
-      enable_ip_forwarding          = false
-      enable_accelerated_networking = false
-
-      ip_configurations = [
-        {
-          name                          = "ipconfig1"
-          primary                       = true
-          subnet_id                     = azurerm_subnet.subnet["${var.prefix}-client"].id
-          private_ip_address_allocation = "Static"
-          private_ip_address            = cidrhost(azurerm_subnet.subnet["${var.prefix}-client"].address_prefixes[0], 4)
-          public_ip_address_id          = azurerm_public_ip.public_ip["${var.prefix}-client-pip"].id
         }
       ]
     },
@@ -222,12 +120,6 @@ locals {
       location            = azurerm_resource_group.resource_group[local.resource_group_name].location
 
       name = "nsg-internal"
-    },
-    "nsg-client" = {
-      resource_group_name = azurerm_resource_group.resource_group[local.resource_group_name].name
-      location            = azurerm_resource_group.resource_group[local.resource_group_name].location
-
-      name = "nsg-client"
     }
   }
 
@@ -287,34 +179,6 @@ locals {
       source_address_prefix       = "*"
       destination_address_prefix  = "*"
       network_security_group_name = azurerm_network_security_group.network_security_group["nsg-internal"].name
-    },
-    "nsgsr-client-ingress" = {
-      resource_group_name = azurerm_resource_group.resource_group[local.resource_group_name].name
-
-      name                        = "nsgsr-client-ingress"
-      priority                    = 1000
-      direction                   = "Inbound"
-      access                      = "Allow"
-      protocol                    = "Tcp"
-      source_port_range           = "*"
-      destination_port_ranges     = ["80"]
-      source_address_prefix       = "*"
-      destination_address_prefix  = "*"
-      network_security_group_name = azurerm_network_security_group.network_security_group["nsg-client"].name
-    },
-    "nsgsr-client-egress" = {
-      resource_group_name = azurerm_resource_group.resource_group[local.resource_group_name].name
-
-      name                        = "nsgsr-client-egress"
-      priority                    = 1000
-      direction                   = "Outbound"
-      access                      = "Allow"
-      protocol                    = "Tcp"
-      source_port_range           = "*"
-      destination_port_ranges     = ["80", "443"]
-      source_address_prefix       = "*"
-      destination_address_prefix  = "*"
-      network_security_group_name = azurerm_network_security_group.network_security_group["nsg-client"].name
     }
   }
 
@@ -327,16 +191,8 @@ locals {
       subnet_id                 = azurerm_subnet.subnet["${var.prefix}-internal"].id
       network_security_group_id = azurerm_network_security_group.network_security_group["nsg-internal"].id
     }
-    "${var.prefix}-client" = {
-      subnet_id                 = azurerm_subnet.subnet["${var.prefix}-client"].id
-      network_security_group_id = azurerm_network_security_group.network_security_group["nsg-client"].id
-    }
     "${var.prefix}-server" = {
       subnet_id                 = azurerm_subnet.subnet["${var.prefix}-server"].id
-      network_security_group_id = azurerm_network_security_group.network_security_group["nsg-external"].id
-    }
-    "${var.prefix}-appgw" = {
-      subnet_id                 = azurerm_subnet.subnet["${var.prefix}-appgw"].id
       network_security_group_id = azurerm_network_security_group.network_security_group["nsg-external"].id
     }
   }

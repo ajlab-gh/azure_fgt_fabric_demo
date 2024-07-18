@@ -1,52 +1,7 @@
 
-# Fortinet Competitive Environment Reference Architecture
+# BLAH BLAH BLAH
 
-## Introduction
-
-As you explore the world of network security, it can be overwhelming to choose the right solutions for your unique needs. This repository provides an infrastructure as code (IaC) solution that deploys and preconfigures competing products from leading vendors, including FortiGate and FortiWeb, Azure Firewall Premium, and Azure Application Gateway with WAF_V2.
-
-Our goal is to provide a comprehensive environment where you can evaluate these solutions side by side, making it easier for you to decide which one best meets your requirements. This repository does not aim to promote or demote any specific product; instead, it serves as a neutral tool to facilitate your evaluation process.
-
-### Design
-
-This IaC solution deploys security components, including FortiGate-VM, FortiWeb-VM, Azure Firewall Premium, and Azure Application Gateway with WAF_V2. Each component is preconfigured to provide a comprehensive view of how these solutions work, and to highlight their use-cases.
-
-In addition to the security components, the environment includes client and server systems with applications running within docker. This design simulates the typical flow for publishing web services, yet is preconfigured to allow for the targetting these applications along alternate paths, simplifying the testing and analysis of these security solutions.
-
-In this way, testing can be accomplished without affecting the underlying infrastructure, streamlining the testing and validation of the security measures and their effectiveness in various use cases.
-
-Containers running on client
-
-- Darwin2
-
-Containers running on server
-
-- Damn Vulnerable Web Application (DVWA)
-- Juiceshop
-- Petstore
-- Demo-Web-App (benoitbmtl)
-
-### Network Diagram
-
-![Detailed View](https://raw.githubusercontent.com/AJLab-GH/ftnt-demo/main/docs/CompetitiveEnv.PNG)
-
-### Deployment
-
-To get started with this IaC solution, follow these steps:
-
-1. Clone the repository: `git clone https://github.com/AJLab-GH/ftnt-demo.git`
-2. Initialize Terraform: `cd ftnt-demo && terraform init`
-3. Apply the configuration: `terraform apply`
-
-### Deployment Outputs
-
-To view the deployment outputs, run: `terraform output -json`
-
-### Evaluation and Comparison
-
-Use this IaC solution as a starting point for your own evaluation and comparison of these competing products. We encourage you to explore each component's features, configurations, and performance characteristics by launching pre-configured sets of attacks where you can test the security features of each solution by attempting to exploit vulnerabilities in the demo applications to make an informed decision about which product best fits your needs.
-
-Remember, the goal is not to promote or demote any specific product; it's to provide a comprehensive environment where you can evaluate and compare solutions side by side, making it easier for you to decide which one best meets your requirements.
+## MORE BLAH BLAH
 
 ### Style Guide
 
@@ -113,12 +68,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [azurerm_application_gateway.application_gateway](https://registry.terraform.io/providers/hashicorp/azurerm/3.98.0/docs/resources/application_gateway) | resource |
-| [azurerm_firewall.firewall](https://registry.terraform.io/providers/hashicorp/azurerm/3.98.0/docs/resources/firewall) | resource |
-| [azurerm_firewall_policy.firewall_policy](https://registry.terraform.io/providers/hashicorp/azurerm/3.98.0/docs/resources/firewall_policy) | resource |
-| [azurerm_firewall_policy_rule_collection_group.firewall_policy_rule_collection_group](https://registry.terraform.io/providers/hashicorp/azurerm/3.98.0/docs/resources/firewall_policy_rule_collection_group) | resource |
 | [azurerm_linux_virtual_machine.linux_virtual_machine](https://registry.terraform.io/providers/hashicorp/azurerm/3.98.0/docs/resources/linux_virtual_machine) | resource |
-| [azurerm_managed_disk.managed_disk](https://registry.terraform.io/providers/hashicorp/azurerm/3.98.0/docs/resources/managed_disk) | resource |
 | [azurerm_network_interface.network_interface](https://registry.terraform.io/providers/hashicorp/azurerm/3.98.0/docs/resources/network_interface) | resource |
 | [azurerm_network_security_group.network_security_group](https://registry.terraform.io/providers/hashicorp/azurerm/3.98.0/docs/resources/network_security_group) | resource |
 | [azurerm_network_security_rule.network_security_rule](https://registry.terraform.io/providers/hashicorp/azurerm/3.98.0/docs/resources/network_security_rule) | resource |
@@ -129,9 +79,7 @@ No modules.
 | [azurerm_subnet.subnet](https://registry.terraform.io/providers/hashicorp/azurerm/3.98.0/docs/resources/subnet) | resource |
 | [azurerm_subnet_network_security_group_association.subnet_network_security_group_association](https://registry.terraform.io/providers/hashicorp/azurerm/3.98.0/docs/resources/subnet_network_security_group_association) | resource |
 | [azurerm_subnet_route_table_association.subnet_route_table_association](https://registry.terraform.io/providers/hashicorp/azurerm/3.98.0/docs/resources/subnet_route_table_association) | resource |
-| [azurerm_virtual_machine_data_disk_attachment.virtual_machine_data_disk_attachment](https://registry.terraform.io/providers/hashicorp/azurerm/3.98.0/docs/resources/virtual_machine_data_disk_attachment) | resource |
 | [azurerm_virtual_network.virtual_network](https://registry.terraform.io/providers/hashicorp/azurerm/3.98.0/docs/resources/virtual_network) | resource |
-| [azurerm_web_application_firewall_policy.web_application_firewall_policy](https://registry.terraform.io/providers/hashicorp/azurerm/3.98.0/docs/resources/web_application_firewall_policy) | resource |
 | [null_resource.initialize_dvwa](https://registry.terraform.io/providers/hashicorp/null/3.2.2/docs/resources/resource) | resource |
 | [null_resource.marketplace_agreement](https://registry.terraform.io/providers/hashicorp/null/3.2.2/docs/resources/resource) | resource |
 | [random_password.admin_password](https://registry.terraform.io/providers/hashicorp/random/3.6.1/docs/resources/password) | resource |
@@ -152,16 +100,8 @@ No modules.
 |------|-------------|
 | <a name="output_admin_password"></a> [admin\_password](#output\_admin\_password) | Password for admin account |
 | <a name="output_admin_username"></a> [admin\_username](#output\_admin\_username) | Username for admin account |
-| <a name="output_application_gateways"></a> [application\_gateways](#output\_application\_gateways) | n/a |
-| <a name="output_client_via_internet_connection_string"></a> [client\_via\_internet\_connection\_string](#output\_client\_via\_internet\_connection\_string) | Host to launch attacks from |
-| <a name="output_disk_attachments"></a> [disk\_attachments](#output\_disk\_attachments) | n/a |
-| <a name="output_firewall_policies"></a> [firewall\_policies](#output\_firewall\_policies) | n/a |
-| <a name="output_firewall_policy_rule_collection_groups"></a> [firewall\_policy\_rule\_collection\_groups](#output\_firewall\_policy\_rule\_collection\_groups) | n/a |
-| <a name="output_firewalls"></a> [firewalls](#output\_firewalls) | n/a |
 | <a name="output_fortigate_connection_string"></a> [fortigate\_connection\_string](#output\_fortigate\_connection\_string) | This string represents the connection string for the Management of the FortiGate |
-| <a name="output_fortiweb_connection_string"></a> [fortiweb\_connection\_string](#output\_fortiweb\_connection\_string) | This string represents the connection string for the Management of the FortiWeb |
 | <a name="output_linux_virtual_machines"></a> [linux\_virtual\_machines](#output\_linux\_virtual\_machines) | n/a |
-| <a name="output_managed_disks"></a> [managed\_disks](#output\_managed\_disks) | n/a |
 | <a name="output_network_interfaces"></a> [network\_interfaces](#output\_network\_interfaces) | n/a |
 | <a name="output_network_security_groups"></a> [network\_security\_groups](#output\_network\_security\_groups) | n/a |
 | <a name="output_network_security_rules"></a> [network\_security\_rules](#output\_network\_security\_rules) | n/a |
