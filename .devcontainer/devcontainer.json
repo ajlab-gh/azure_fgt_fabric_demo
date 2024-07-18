@@ -1,9 +1,9 @@
 {
   "image": "docker.io/robinmordasiewicz/devcontainer:latest",
   "initializeCommand": "docker pull docker.io/robinmordasiewicz/devcontainer:latest",
-  "name": "ftnt-demo",
+  "name": "azure_fgt_fabric_demo",
   "runArgs": [
-    "--name=ftnt-demo",
-    "--hostname=ftnt-demo"
+    "--name=azure_fgt_fabric_demo",
+    "--hostname=azure_fgt_fabric_demo"
   ]
 }
