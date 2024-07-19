@@ -42,6 +42,8 @@ locals {
         var_port2_netmask           = cidrnetmask(azurerm_subnet.subnet["${var.prefix}-internal"].address_prefixes[0])
         var_server_mappedip         = azurerm_network_interface.network_interface["${var.prefix}-server-nic"].private_ip_address
         var_license_file            = var.license
+        var_psksecret               = random_password.admin_password.result
+        var_remote_gw               = var.remote_gw
       }))
 
 
