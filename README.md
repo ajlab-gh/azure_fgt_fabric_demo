@@ -17,6 +17,18 @@ This setup enables testing with minimal changes to the infrastructure or configu
 - Petstore
 - Demo-Web-App (benoitbmtl)
 
+### Deployment
+
+To get started with this IaC solution, follow these steps:
+
+1. Clone the repository: `git clone https://github.com/AJLab-GH/ftnt-demo.git`
+2. Initialize Terraform: `cd ftnt-demo && terraform init`
+3. Apply the configuration: `terraform apply`
+
+### Deployment Outputs
+
+To view the deployment outputs, run: `terraform output -json`
+
 ### Style Guide
 
 Any contributor looking to collaborate on this project should follow the Terragrunt Style Guide, along with these supplementary guidances, following these guidelines will help maintain consistency, reduce errors, and improve overall code quality.
