@@ -13,7 +13,7 @@ locals {
       offer     = "fortinet_fortigate-vm_v5"
       vm_size   = "Standard_F2s_v2"
       version   = "latest"
-      sku       = "fortinet_fg-vm"
+      sku       = "fortinet_fg-vm_payg_2023"
     }
   }
 

@@ -92,19 +92,18 @@ end
 
 config vpn ipsec phase2-interface
     edit "Branch-to-Azure"
-        set phase1name "branch-to-Azure"
+        set phase1name "Branch-to-Azure"
         set proposal aes128-sha1 aes256-sha1 aes128-sha256 aes256-sha256 aes128gcm aes256gcm chacha20poly1305
     next
 end
 
 config system interface
-    edit "branch-to-Azure"
+    edit "Branch-to-Azure"
         set vdom "root"
         set ip 169.254.252.1 255.255.255.255
         set allowaccess ping
         set type tunnel
         set remote-ip 169.254.252.2 255.255.255.252
-        set snmp-index 7
         set interface "port1"
     next
 end
