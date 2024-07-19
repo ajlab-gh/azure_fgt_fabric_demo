@@ -31,7 +31,7 @@ locals {
       admin_username = random_pet.admin_username.id
       admin_password = random_password.admin_password.result
 
-      custom_data = base64encode(templatefile("cloud-init/fgt.tpl", {
+      custom_data = base64encode(templatefile("../cloud-init/fgt.tpl", {
         var_host_name               = "${var.prefix}-fgt"
         var_vnet_address_prefix     = azurerm_virtual_network.virtual_network["${var.prefix}-vnet"].address_space[0]
         var_external_subnet_gateway = cidrhost(azurerm_subnet.subnet["${var.prefix}-external"].address_prefixes[0], 1)
@@ -86,7 +86,7 @@ locals {
       admin_password = random_password.admin_password.result
 
       custom_data = base64encode(
-        templatefile("cloud-init/server.tpl", {})
+        templatefile("../cloud-init/server.tpl", {})
       )
 
       network_interface_ids = [azurerm_network_interface.network_interface["${var.prefix}-server-nic"].id]
