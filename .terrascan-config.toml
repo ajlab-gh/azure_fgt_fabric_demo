@@ -1,2 +1,0 @@
-[rules]
-skip-rules = ["AC_AZURE_0189", "AC_AZURE_0389", "AC_AZURE_0356" ]
