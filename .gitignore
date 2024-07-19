@@ -36,9 +36,6 @@ terraform.rc
 # Ignore EXE files
 *.exe
 
-# Ignore Text Files
-chatgpt-prompt.txt
-
 # Local files that should also be ignored for this project
 .terraform.lock.hcl
 .cache/*

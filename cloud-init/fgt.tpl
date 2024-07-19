@@ -5,6 +5,16 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment; filename="license"
+
+%{ if length(var_license_file) > 0 }
+${file(var_license_file)}
+%{ endif }
+
+--==FGTCONF==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Content-Disposition: attachment; filename="config"
 
 config system sdn-connector
@@ -33,9 +43,12 @@ config router static
         set gateway ${var_internal_subnet_gateway}
     next
 end
-config system settings
-set default-voip-alg-mode kernel-helper-based
+
+    config system settings
+        set default-voip-alg-mode kernel-helper-based
+    next
 end
+
 config system interface
     edit port1
         set alias external
@@ -55,54 +68,57 @@ end
 
 config system interface
     edit port1
-    append allowaccess fgfm
+        append allowaccess fgfm
+    next
 end
+
 config system interface
     edit port2
-    append allowaccess fgfm
+        append allowaccess fgfm
+    next
 end
 
 config firewall vip
-edit "server-SSH-VIP"
-set extip ${var_ipconfig1}
-set mappedip "${var_server_mappedip}"
-set extintf "any"
-set portforward enable
-set extport 2222
-set mappedport 22
-next
-edit "server-HTTP-DVWA-VIP"
-set extip ${var_ipconfig1}
-set mappedip "${var_server_mappedip}"
-set extintf "any"
-set portforward enable
-set extport 8001
-set mappedport 1000
-next
-edit "server-HTTP-JS-VIP"
-set extip ${var_ipconfig1}
-set mappedip "${var_server_mappedip}"
-set extintf "any"
-set portforward enable
-set extport 8002
-set mappedport 3000
-next
-edit "server-HTTP-PS-VIP"
-set extip ${var_ipconfig1}
-set mappedip "${var_server_mappedip}"
-set extintf "any"
-set portforward enable
-set extport 8003
-set mappedport 4000
-next
-edit "server-HTTP-BANK-VIP"
-set extip ${var_ipconfig1}
-set mappedip "${var_server_mappedip}"
-set extintf "any"
-set portforward enable
-set extport 8004
-set mappedport 2000
-next
+    edit "server-SSH-VIP"
+        set extip ${var_ipconfig1}
+        set mappedip "${var_server_mappedip}"
+        set extintf "any"
+        set portforward enable
+        set extport 2222
+        set mappedport 22
+    next
+    edit "server-HTTP-DVWA-VIP"
+        set extip ${var_ipconfig1}
+        set mappedip "${var_server_mappedip}"
+        set extintf "any"
+        set portforward enable
+        set extport 8001
+        set mappedport 1000
+    next
+    edit "server-HTTP-JS-VIP"
+        set extip ${var_ipconfig1}
+        set mappedip "${var_server_mappedip}"
+        set extintf "any"
+        set portforward enable
+        set extport 8002
+        set mappedport 3000
+    next
+    edit "server-HTTP-PS-VIP"
+        set extip ${var_ipconfig1}
+        set mappedip "${var_server_mappedip}"
+        set extintf "any"
+        set portforward enable
+        set extport 8003
+        set mappedport 4000
+    next
+    edit "server-HTTP-BANK-VIP"
+        set extip ${var_ipconfig1}
+        set mappedip "${var_server_mappedip}"
+        set extintf "any"
+        set portforward enable
+        set extport 8004
+        set mappedport 2000
+    next
 end
 
 config firewall policy
@@ -213,15 +229,5 @@ config firewall policy
         set nat enable
     next
 end
-
---==FGTCONF==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: attachment; filename="license"
-
-%{ if length(var_license_file) > 0 }
-${file(var_license_file)}
-%{ endif }
 
 --==FGTCONF==--
