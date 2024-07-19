@@ -1,7 +1,22 @@
 
-# BLAH BLAH BLAH
+# Azure FortiGate-VM Fabric Integration Demo
 
-## MORE BLAH BLAH
+## Introduction
+
+This Infrastructure as Code template deploys a FortiGate-VM and vulnerable workload into Azure. It's main intent is to integrate with an on-premise environment over IPSec VPN and join a Fortinet Fabric to show-case the cloud integrations.
+
+### Design
+
+This IaC solution deploys a single pre-configured FortiGate-VM. In addition to the security component, the environment includes server system with applications running within docker. This design simulates the typical flow for publishing web services and Site to Site communications over VPN. It is preconfigured to allow for users to Target the server via the Internet, or On-prem to simulate a realistic user experience.
+
+In this way, testing can be implemented and performed with minimal changes to the infrastructure, or configurations.
+
+Containers running on server
+
+- Damn Vulnerable Web Application (DVWA)
+- Juiceshop
+- Petstore
+- Demo-Web-App (benoitbmtl)
 
 ### Style Guide
 
