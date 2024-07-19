@@ -12,9 +12,12 @@ variable "prefix" {
   description = "The Prefix to append to your resources"
   type        = string
 }
-
 variable "license" {
   description = "Add the name of your license file for BYOL deployment"
   type        = string
   default     = "../license.lic"
+}
+variable "remote_gw" {
+  description = "Add the Peer IP for your Site to Site VPN"
+  type        = string
 }

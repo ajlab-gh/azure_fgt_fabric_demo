@@ -78,6 +78,53 @@ config system interface
     next
 end
 
+config vpn ipsec phase1-interface
+    edit "Branch-to-Azure"
+        set interface "port1"
+        set ike-version 2
+        set peertype any
+        set net-device disable
+        set proposal aes256-sha256
+        set remote-gw ${var_remote_gw}
+        set psksecret ${var_psksecret}
+    next
+end
+
+config vpn ipsec phase2-interface
+    edit "Branch-to-Azure"
+        set phase1name "Branch-to-Azure"
+        set proposal aes128-sha1 aes256-sha1 aes128-sha256 aes256-sha256 aes128gcm aes256gcm chacha20poly1305
+    next
+end
+
+config system interface
+    edit "Branch-to-Azure"
+        set vdom "root"
+        set ip 169.254.252.1 255.255.255.255
+        set allowaccess ping
+        set type tunnel
+        set remote-ip 169.254.252.2 255.255.255.252
+        set interface "port1"
+    next
+end
+
+config router bgp
+set as 65503
+set router-id ${var_ipconfig1}
+set network-import-check disable
+    config neighbor
+        edit "169.254.252.2"
+               set bfd enable
+               set remote-as 65502
+         next
+     end
+    config network
+        edit 1
+            set prefix ${var_server_mappedip} 255.255.255.255
+        next
+    end
+end
+
 config firewall vip
     edit "server-SSH-VIP"
         set extip ${var_ipconfig1}
@@ -226,6 +273,22 @@ config firewall policy
         set dstaddr "all"
         set schedule "always"
         set service "ALL"
+        set nat enable
+    next
+    edit 7
+        set name "Branch-to-Azure"
+        set srcintf "Branch-to-Azure"
+        set dstintf "port2"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "all"
+        set schedule "always"
+        set service "ALL"
+        set utm-status enable
+        set inspection-mode proxy
+        set av-profile "default"
+        set ips-sensor "default"
+        set application-list "default"
         set nat enable
     next
 end
