@@ -16,5 +16,5 @@ variable "prefix" {
 variable "license" {
   description = "Add the name of your license file for BYOL deployment"
   type        = string
-  default     = "license.lic"
+  default     = "../license.lic"
 }
