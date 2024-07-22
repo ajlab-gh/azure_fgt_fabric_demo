@@ -22,8 +22,13 @@ This setup enables testing with minimal changes to the infrastructure or configu
 To get started with this IaC solution, follow these steps:
 
 1. Clone the repository: `git clone https://github.com/AJLab-GH/azure_fgt_fabric_demo.git`
-2. Initialize Terraform: `cd azure_fgt_fabric_demo && terraform init`
+2. Initialize Terraform: `cd azure_fgt_fabric_demo/terraform && terraform init`
 3. Apply the configuration: `terraform apply`
+
+```text
+git clone https://github.com/AJLab-GH/azure_fgt_fabric_demo.git
+cd azure_fgt_fabric_demo/terraform && terraform init && terraform apply
+```
 
 ### Choose your Licensing Type
 
