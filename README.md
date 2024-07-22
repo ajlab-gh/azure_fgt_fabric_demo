@@ -62,7 +62,7 @@ variable "license_type" {
 }
 ```
 
-by default when the "license_type": "byol" is selected, this deployment expect a file called "license.lic" in the root directory with the contents of your license file. If you would prefer to use FortiFlex, simply add your Flex_Token to this file and change the "license_format" variable to "token"
+by default when the "license_type": "byol" is selected, this deployment expect a file called "license.lic" in the cloud-init directory with the contents of your license file. If you would prefer to use FortiFlex, simply add your Flex_Token to this file in lieu of license content, and change the "license_format" variable to "token"
 
 ```text
 variable "license_format" {
