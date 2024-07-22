@@ -39,7 +39,8 @@ variable "license_type" {
     condition     = contains(["byol", "payg"], var.license_type)
     error_message = "The license_type variable must be either 'byol' or 'payg'."
   }
-}```
+}
+```
 
 by default when the "license_type": "byol" is selected, this deployment expect a file called "license.lic" in the root directory with the contents of your license file. If you would prefer to use FortiFlex, simply add your Flex_Token to this file and change the "license_format" variable to "token"
 
@@ -53,7 +54,8 @@ variable "license_format" {
       condition = contains(["token", "file"], var.license_format)
       error_message = "You must define whether you are providing a FortiFlex Token, or License File for License Content in BYOL"
     }
-}```
+}
+```
 
 ### Deployment Outputs
 
