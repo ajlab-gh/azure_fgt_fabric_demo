@@ -30,7 +30,7 @@ git clone https://github.com/AJLab-GH/azure_fgt_fabric_demo.git
 cd azure_fgt_fabric_demo/terraform && terraform init && terraform apply
 ```
 
-You'll be prompted to enter your environmental prefix, and the remote gateway you'll use for your Site to Site IPSec VPN Demo
+Upon deployment, you'll be prompted to enter your environmental prefix, and to define the remote gateway for your Site to Site IPSec VPN Demo.
 
 ```plaintext
 var.prefix
@@ -47,7 +47,7 @@ var.remote_gw
 
 ### Choose your Licensing Type
 
-The default licensing model used for this deployment is Pay-as-you-go (Payg). If you would like to use Bring-your-own-license (BYOL) or FortiFlex, please set the relevant variable values accordingly:
+The default licensing model used for this deployment is Pay-as-you-go (PAYG). To deploy using the PAYG SKU, no intervention is required. Simply perform the steps found in the **Deployment** section. Alternatively, If you would like to use Bring-your-own-license (BYOL) or FortiFlex, please set the relevant variable values accordingly prior to deployment:
 
 ```text
 variable "license_type" {
