@@ -21,13 +21,43 @@ This setup enables testing with minimal changes to the infrastructure or configu
 
 To get started with this IaC solution, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/AJLab-GH/ftnt-demo.git`
-2. Initialize Terraform: `cd ftnt-demo && terraform init`
+1. Clone the repository: `git clone https://github.com/AJLab-GH/azure_fgt_fabric_demo.git`
+2. Initialize Terraform: `cd azure_fgt_fabric_demo && terraform init`
 3. Apply the configuration: `terraform apply`
+
+### Choose your Licensing Type
+
+The default licensing model used for this deployment is Pay-as-you-go (Payg). If you would like to use Bring-your-own-license (BYOL) or FortiFlex, please set the relevant variable values accordingly:
+
+```text
+variable "license_type" {
+  description = "Provide the license type for FortiGate-VM Instances, either byol or payg."
+  type = string
+  default = "byol"
+
+    validation {
+    condition     = contains(["byol", "payg"], var.license_type)
+    error_message = "The license_type variable must be either 'byol' or 'payg'."
+  }
+}```
+
+by default when the "license_type": "byol" is selected, this deployment expect a file called "license.lic" in the root directory with the contents of your license file. If you would prefer to use FortiFlex, simply add your Flex_Token to this file and change the "license_format" variable to "token"
+
+```text
+variable "license_format" {
+  description = "Provide the license type for FortiGate-VM Instances, either token or file."
+  type = string
+  default = "token"
+
+    validation {
+      condition = contains(["token", "file"], var.license_format)
+      error_message = "You must define whether you are providing a FortiFlex Token, or License File for License Content in BYOL"
+    }
+}```
 
 ### Deployment Outputs
 
-To view the deployment outputs, run: `terraform output -json`
+To view the deployment outputs, including your username and password, run: `terraform output -json`
 
 ### Style Guide
 
