@@ -7,9 +7,14 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: attachment; filename="license"
 
-%{ if length(var_license_file) > 0 }
+%{ if var_format == "token" }
+LICENSE-TOKEN:${chomp(file(var_license_file))} INTERVAL:4 COUNT:4
+%{ endif }
+
+%{ if var_format == "file" }
 ${file(var_license_file)}
 %{ endif }
+
 
 --==FGTCONF==
 Content-Type: text/plain; charset="us-ascii"
@@ -292,5 +297,6 @@ config firewall policy
         set nat enable
     next
 end
+
 
 --==FGTCONF==--

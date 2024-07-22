@@ -13,7 +13,7 @@ locals {
       offer     = "fortinet_fortigate-vm_v5"
       vm_size   = "Standard_F2s_v2"
       version   = "latest"
-      sku       = "fortinet_fg-vm_payg_2023"
+      sku       = var.license_type == "byol" ? "fortinet_fg-vm" : "fortinet_fg-vm_payg_2023"
     }
   }
 
@@ -41,9 +41,11 @@ locals {
         var_port2_ip                = azurerm_network_interface.network_interface["${var.prefix}-fgt-nic-int"].private_ip_address
         var_port2_netmask           = cidrnetmask(azurerm_subnet.subnet["${var.prefix}-internal"].address_prefixes[0])
         var_server_mappedip         = azurerm_network_interface.network_interface["${var.prefix}-server-nic"].private_ip_address
-        var_license_file            = var.license
+        var_license_file            = var.license_file_location
         var_psksecret               = random_password.admin_password.result
         var_remote_gw               = var.remote_gw
+        var_type                    = var.license_type
+        var_format                  = var.license_format
       }))
 
 
