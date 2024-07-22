@@ -32,7 +32,8 @@ cd azure_fgt_fabric_demo/terraform && terraform init && terraform apply
 
 You'll be prompted to enter your environmental prefix, and the remote gateway you'll use for your Site to Site IPSec VPN Demo
 
-`var.prefix
+```plaintext
+var.prefix
   The Prefix to append to your resources
 
   Enter a value: <enter your value>
@@ -40,7 +41,8 @@ You'll be prompted to enter your environmental prefix, and the remote gateway yo
 var.remote_gw
   Add the Peer IP for your Site to Site VPN
 
-  Enter a value: <enter your value>`
+  Enter a value: <enter your value>
+```
 
 
 ### Choose your Licensing Type
