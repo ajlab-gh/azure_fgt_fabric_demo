@@ -34,7 +34,7 @@ variable "license_format" {
 variable "license_file_location" {
   description = "Add the name of your license file for BYOL deployment"
   type        = string
-  default     = "../license.lic"
+  default     = "../cloud-init/license.lic"
 }
 variable "enable_output" {
   description = "Enable/Disable output"
