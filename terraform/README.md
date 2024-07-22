@@ -48,7 +48,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_enable_output"></a> [enable\_output](#input\_enable\_output) | Enable/Disable output | `bool` | `false` | no |
-| <a name="input_license_file_location"></a> [license\_file\_location](#input\_license\_file\_location) | Add the name of your license file for BYOL deployment | `string` | `"../license.lic"` | no |
+| <a name="input_license_file_location"></a> [license\_file\_location](#input\_license\_file\_location) | Add the name of your license file for BYOL deployment | `string` | `"../cloud-init/license.lic"` | no |
 | <a name="input_license_format"></a> [license\_format](#input\_license\_format) | Provide the license type for FortiGate-VM Instances, either token or file. | `string` | `"file"` | no |
 | <a name="input_license_type"></a> [license\_type](#input\_license\_type) | Provide the license type for FortiGate-VM Instances, either BYOL or PAYG. | `string` | `"payg"` | no |
 | <a name="input_prefix"></a> [prefix](#input\_prefix) | The Prefix to append to your resources | `string` | n/a | yes |
