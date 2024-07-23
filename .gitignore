@@ -40,7 +40,7 @@ terraform.rc
 .terraform.lock.hcl
 .cache/*
 fdevsec.yaml
-license.lic
+test_license.lic
 
 # vscode files that should be ignored
 
