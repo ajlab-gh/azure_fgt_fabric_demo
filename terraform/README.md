@@ -32,6 +32,7 @@ No modules.
 | [azurerm_network_security_rule.network_security_rule](https://registry.terraform.io/providers/hashicorp/azurerm/3.98.0/docs/resources/network_security_rule) | resource |
 | [azurerm_public_ip.public_ip](https://registry.terraform.io/providers/hashicorp/azurerm/3.98.0/docs/resources/public_ip) | resource |
 | [azurerm_resource_group.resource_group](https://registry.terraform.io/providers/hashicorp/azurerm/3.98.0/docs/resources/resource_group) | resource |
+| [azurerm_role_assignment.fgt_managed_identity](https://registry.terraform.io/providers/hashicorp/azurerm/3.98.0/docs/resources/role_assignment) | resource |
 | [azurerm_route.route](https://registry.terraform.io/providers/hashicorp/azurerm/3.98.0/docs/resources/route) | resource |
 | [azurerm_route_table.route_table](https://registry.terraform.io/providers/hashicorp/azurerm/3.98.0/docs/resources/route_table) | resource |
 | [azurerm_subnet.subnet](https://registry.terraform.io/providers/hashicorp/azurerm/3.98.0/docs/resources/subnet) | resource |
@@ -42,6 +43,7 @@ No modules.
 | [null_resource.marketplace_agreement](https://registry.terraform.io/providers/hashicorp/null/3.2.2/docs/resources/resource) | resource |
 | [random_password.admin_password](https://registry.terraform.io/providers/hashicorp/random/3.6.1/docs/resources/password) | resource |
 | [random_pet.admin_username](https://registry.terraform.io/providers/hashicorp/random/3.6.1/docs/resources/pet) | resource |
+| [azurerm_subscription.primary](https://registry.terraform.io/providers/hashicorp/azurerm/3.98.0/docs/data-sources/subscription) | data source |
 
 ## Inputs
 
